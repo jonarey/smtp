@@ -1,0 +1,30 @@
+Contributors: 
+	Jonathan Reynolds
+
+Protocol:
+	Simple Mail Transfer Protocol Partial Implementation 
+	RFC 5321 
+	url: https://tools.ietf.org/html/rfc5321
+
+Implemenation Details:
+	2.4 - non case-sensitive commands (ex: HELO/helo)
+
+Supported Features:
+	HELO			X
+	MAIL FROM 		X
+	RCPT TO 		X
+	DATA 			X
+	QUIT			X
+	SND/RCV Multithreading	X
+	User Authentication	X
+	Server Connection Log	X
+	Base64 (D)encryption	X
+
+Files:
+	CL_SND - encrypts & sends email from client to server
+	SV_SND - decrypts, authenticates, receives & stores email from client
+	CL_RCV - decrypts & retrieves email(s) from server for client 
+	SC_RCV - encrypts, authenticates & sends receiving client email(s)
+
+Additional Information:
+	P1_Report can be viewed using Microsoft Word
