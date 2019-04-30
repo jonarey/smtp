@@ -7,24 +7,30 @@
 
 import sys
 import socket
+import threading 
 # cmd line inputs
-hostname = ""
-port = ""
+
+port = 55001
 if len(sys.argv) < 3:
     #print("Please provide 2 files: a json file for input, and a text file with starting points")
     print("Usage: python server.py hostname port_number")
     exit(2)
 else:
     print("Parameters accepted. \n")
-    hostname = sys.argv[1]
+    hostname_str = sys.argv[1]
+    hostname = int(hostname_str)
     port = sys.argv[2]
 
     #print("Hostname: " + hostname) 
     #print("Port: " + port) 
 
-#declare socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-#bind socket with port and hostname
-server_address = ('localhost', port)
-sock.bind(server_address)
+#associates  hostname & port -> socket
+sock.bind((hostname,port))
+
+# parameter defines connection backlog size 
+sock.listen(5)
+
+
+
